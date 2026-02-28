@@ -1,0 +1,42 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/products/products",
+        "pages/warranty/warranty",
+        "pages/profile/profile",
+        "pages/warranty-upload/upload",
+        "pages/staff-manage/staff-manage",
+        "pages/warranty-detail/detail",
+        "pages/list/list",
+        "pages/product-detail/product-detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+    },
+    "tabBar": {
+        "custom": true,
+        "color": "#999999",
+        "selectedColor": "#ff6b35",
+        "backgroundColor": "#1a1a1a",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/products/products",
+                "text": "产品"
+            },
+            {
+                "pagePath": "pages/warranty/warranty",
+                "text": "质保"
+            },
+            {
+                "pagePath": "pages/profile/profile",
+                "text": "我的"
+            }
+        ]
+    }
+}

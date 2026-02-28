@@ -1,0 +1,134 @@
+<navbar title="{{isEditMode ? '修改质保信息' : '录入质保单'}}" back="{{true}}" />
+
+<view class="container">
+  <view class="step-header" wx:if="{{!isEditMode}}">
+    <view class="step-item {{currentStep >= 1 ? 'active' : ''}}">1. 门店车辆</view>
+    <view class="step-line"></view>
+    <view class="step-item {{currentStep >= 2 ? 'active' : ''}}">2. 车主产品</view>
+    <view class="step-line"></view>
+    <view class="step-item {{currentStep >= 3 ? 'active' : ''}}">3. 施工质保</view>
+  </view>
+
+  <form bindsubmit="submitForm">
+    <view class="form-group">
+      <view class="group-title">门店信息</view>
+      <view class="input-item required">
+        <text class="label">门店名称</text>
+        <input name="storeName" placeholder="请输入全称" placeholder-class="ph" value="{{form.storeName}}" />
+      </view>
+      <view class="input-item">
+        <text class="label">施工技师</text>
+        <input name="technician" placeholder="技师姓名" placeholder-class="ph" value="{{form.technician}}" />
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="group-title">车辆及车主信息</view>
+      <view class="input-item required">
+        <text class="label">车牌号</text>
+        <input name="carPlate" placeholder="如：京AD12345" placeholder-class="ph" value="{{form.carPlate}}" />
+      </view>
+      <view class="input-item required">
+        <text class="label">车架号 (VIN)</text>
+        <view class="input-row">
+          <input class="flex-input" name="vin" placeholder="17位车架号" placeholder-class="ph" maxlength="17" value="{{form.vin}}" />
+          <view class="scan-btn" bindtap="scanVIN">📷 识别</view>
+        </view>
+      </view>
+      <view class="input-item required">
+        <text class="label">车主姓名</text>
+        <input name="ownerName" placeholder="车主姓名" placeholder-class="ph" value="{{form.ownerName}}" />
+      </view>
+      <view class="input-item required">
+        <text class="label">车主电话</text>
+        <input name="ownerPhone" type="number" maxlength="11" placeholder="手机号" placeholder-class="ph" value="{{form.ownerPhone}}" />
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="group-title">产品及施工信息</view>
+      <view class="type-btn-group">
+        <view class="type-btn {{form.productType === '漆面膜' ? 'active' : ''}}" bindtap="selectProductType" data-type="漆面膜">漆面膜</view>
+        <view class="type-btn {{form.productType === '太阳膜' ? 'active' : ''}}" bindtap="selectProductType" data-type="太阳膜">太阳膜</view>
+        <view class="type-btn {{form.productType === '改色膜' ? 'active' : ''}}" bindtap="selectProductType" data-type="改色膜">改色膜</view>
+      </view>
+
+      <block wx:if="{{form.productType === '太阳膜'}}">
+        <view class="input-item required">
+          <text class="label">施工部位 (可多选)</text>
+          <checkbox-group class="parts-grid" bindchange="bindPartsChange">
+            <label class="parts-item {{form.selectedPartsMap[item] ? 'item-active' : ''}}" wx:for="{{solarParts}}" wx:key="item">
+              <checkbox value="{{item}}" hidden checked="{{form.selectedPartsMap[item]}}" /> {{item}}
+            </label>
+          </checkbox-group>
+        </view>
+
+        <view class="part-detail-box" wx:for="{{form.productDetails}}" wx:key="part">
+          <view class="part-tag">{{item.part}}</view>
+          <view class="input-item small">
+            <text class="label">品牌系列</text>
+            <input data-index="{{index}}" bindinput="onDetailInput" data-field="series" placeholder="如：后羿70" placeholder-class="ph" value="{{item.series}}" />
+          </view>
+          <view class="input-item small">
+            <text class="label">SN码</text>
+            <input data-index="{{index}}" bindinput="onDetailInput" data-field="sn" placeholder="SN码" placeholder-class="ph" value="{{item.sn}}" />
+          </view>
+          <view class="input-item small no-margin">
+            <text class="label">产品价格</text>
+            <input data-index="{{index}}" bindinput="onDetailInput" data-field="price" type="digit" placeholder="价格" placeholder-class="ph" value="{{item.price}}" />
+          </view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="input-item required">
+          <text class="label">品牌系列</text>
+          <input name="productSeries" placeholder="系列名称" placeholder-class="ph" value="{{form.productSeries}}" />
+        </view>
+        <view class="input-item required highlight">
+          <text class="label">SN码 <text class="tag">关键凭证</text></text>
+          <input name="snCode" placeholder="产品序列号" placeholder-class="ph" value="{{form.snCode}}" />
+        </view>
+        <view class="input-item">
+          <text class="label">产品价格</text>
+          <input name="productPrice" type="digit" placeholder="施工总额" placeholder-class="ph" value="{{form.productPrice}}" />
+        </view>
+      </block>
+
+      <view class="input-item required">
+        <text class="label">施工日期</text>
+        <picker mode="date" bindchange="bindDateChange" value="{{form.constructDate}}">
+          <view class="picker-val {{form.constructDate ? '' : 'placeholder'}}">{{form.constructDate || '请选择'}}</view>
+        </picker>
+      </view>
+
+      <view class="input-item required">
+        <text class="label">质保年限</text>
+        <picker bindchange="bindWarrantyChange" range="{{warrantyYears}}">
+          <view class="picker-val {{form.warrantyYear ? '' : 'placeholder'}}">{{form.warrantyYear ? form.warrantyYear + (form.warrantyYear === '终身' ? '' : '年') : '请选择'}}</view>
+        </picker>
+      </view>
+
+      <view class="input-item">
+        <text class="label">施工备注</text>
+        <textarea name="remark" placeholder="备注说明" placeholder-class="ph" value="{{form.remark}}" />
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="group-title">施工图集</view>
+      <view class="upload-grid">
+        <view class="upload-preview" wx:for="{{tempImages}}" wx:key="*this">
+          <image src="{{item}}" mode="aspectFill" />
+          <view class="del-img" bindtap="deleteImg" data-index="{{index}}">×</view>
+        </view>
+        <view class="upload-add" bindtap="chooseImage" wx:if="{{tempImages.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-tip">{{tempImages.length}}/9张</text>
+        </view>
+      </view>
+    </view>
+
+    <button class="submit-btn" form-type="submit">{{isEditMode ? '保存修改' : '提交质保单'}}</button>
+  </form>
+</view>

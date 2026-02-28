@@ -1,0 +1,80 @@
+<view class="page-container">
+  <view class="header-banner">
+    <image class="main-image" src="{{product.image}}" mode="aspectFill" />
+    <view class="image-overlay"></view>
+    <view class="back-home-btn" bindtap="goHome">
+      <text class="icon-back">←</text>
+    </view>
+  </view>
+
+  <view class="content-card">
+    <view class="tag-row">
+      <text class="category-tag">{{product.tag || 'PREMIUM FILM'}}</text>
+      <view class="hot-badge" wx:if="{{product.isHot}}">HOT</view>
+    </view>
+
+    <view class="main-info">
+      <view class="title-section">
+        <view class="product-name">{{product.name}}</view>
+        <view class="price-box">
+          <text class="symbol">¥</text>
+          <text class="price-num">{{product.price}}</text>
+          <text class="unit">起</text>
+        </view>
+      </view>
+      <text class="product-desc">{{product.desc}}</text>
+    </view>
+
+    <view class="specs-title">
+      <text class="line"></text>
+      <text class="txt">核心性能参数</text>
+      <text class="line"></text>
+    </view>
+    
+    <view class="specs-grid">
+      <view class="spec-item" wx:for="{{product.specs}}" wx:key="label">
+        <view class="spec-inner">
+          <text class="spec-val">{{item.value}}</text>
+          <text class="spec-lab">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="service-bar">
+      <view class="service-item"><icon type="success" size="12" color="#ff6b35"/><text>原厂正品</text></view>
+      <view class="service-item"><icon type="success" size="12" color="#ff6b35"/><text>专业技师</text></view>
+      <view class="service-item"><icon type="success" size="12" color="#ff6b35"/><text>全国联保</text></view>
+    </view>
+
+    <view class="detail-section" wx:if="{{detailImages && detailImages.length > 0}}">
+      <view class="section-head">产品图示</view>
+      <view class="detail-imgs">
+        <image 
+          wx:for="{{detailImages}}" 
+          wx:key="*this" 
+          src="{{item}}" 
+          mode="widthFix" 
+          class="detail-long-img" 
+        />
+      </view>
+    </view>
+
+    <view class="footer-note">— 极致工艺 · 匠心守护 —</view>
+  </view>
+
+  <view class="glass-footer">
+    <view class="footer-left">
+      <view class="nav-icon-btn" bindtap="goHome">
+        <view class="dot"></view>
+        <text>首页</text>
+      </view>
+      <button class="nav-icon-btn" open-type="contact">
+        <view class="dot orange"></view>
+        <text>客服</text>
+      </button>
+    </view>
+    <view class="footer-right">
+      <button class="order-btn" bindtap="makeCall">立即电话预约</button>
+    </view>
+  </view>
+</view>

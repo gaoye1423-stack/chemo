@@ -1,0 +1,111 @@
+<navbar title="首页"/>
+<view class="container">
+  <tabbar selected="0"/>
+  
+  <view class="hero-section">
+    <swiper class="hero-swiper" indicator-dots autoplay interval="4000" duration="600" circular indicator-color="rgba(255,255,255,0.3)" indicator-active-color="#ff6b35">
+      <swiper-item wx:for="{{banners}}" wx:key="id">
+        <image src="{{item.image}}" mode="aspectFill" class="banner-image"/>
+        <view class="banner-overlay"></view>
+        <view class="banner-content">
+          <view class="banner-tag">{{item.tag}}</view>
+          <view class="banner-title">{{item.title}}</view>
+          <view class="banner-subtitle">{{item.subtitle}}</view>
+        </view>
+      </swiper-item>
+    </swiper>
+    
+    <view class="warranty-card" bindtap="goToWarranty">
+      <view class="warranty-left">
+        <view class="warranty-icon-wrap">
+          <text class="warranty-icon">✓</text>
+        </view>
+        <view class="warranty-text">
+          <view class="warranty-title">质保查询</view>
+          <view class="warranty-desc">验证您的专属权益</view>
+        </view>
+      </view>
+      <view class="warranty-arrow">→</view>
+    </view>
+  </view>
+
+  <view class="action-card" bindtap="goToCases">
+    <view class="action-left">
+      <view class="action-icon-wrap cases-icon">
+        <text class="action-icon">▣</text>
+      </view>
+      <view class="action-text">
+        <view class="action-title">施工案例</view>
+        <view class="action-desc">查看真实效果</view>
+      </view>
+    </view>
+    <view class="action-arrow">→</view>
+  </view>
+
+  <view class="section-wrapper">
+    <view class="section-header">
+      <view class="section-title-text">产品系列</view>
+      <view class="section-more" bindtap="goToProducts">全部 →</view>
+    </view>
+  </view>
+
+  <scroll-view class="product-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="product-card" wx:for="{{productSeries}}" wx:key="_id" bindtap="goToProductDetail" data-id="{{item._id}}">
+      <view class="product-glow"></view>
+      <image class="product-image" src="{{item.image}}" mode="aspectFill"/>
+      <view class="product-overlay">
+        <view class="product-category">{{item.tag}}</view>
+        <view class="product-name">{{item.name}}</view>
+        <view class="product-specs">
+          <text class="spec-item" wx:for="{{item.specs}}" wx:for-item="spec" wx:key="index">{{spec.value}}</text>
+        </view>
+      </view>
+      <view class="product-tag" wx:if="{{item.isHot}}">HOT</view>
+    </view>
+  </scroll-view>
+
+  <view class="stats-section">
+    <view class="stat-item">
+      <view class="stat-number gradient-text">50W+</view>
+      <view class="stat-label">服务车辆</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-number gradient-text">10年</view>
+      <view class="stat-label">质保承诺</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-number gradient-text">99%</view>
+      <view class="stat-label">客户满意</view>
+    </view>
+  </view>
+
+  <view class="section-wrapper">
+    <view class="section-title-text">精选案例</view>
+  </view>
+  
+  <view class="case-grid">
+    <view class="case-card large" bindtap="goToCaseDetail" data-id="{{hotCases[0].id}}">
+      <image src="{{hotCases[0].image}}" mode="aspectFill"/>
+      <view class="case-info">
+        <view class="case-car">{{hotCases[0].carModel}}</view>
+        <view class="case-product">{{hotCases[0].product}}</view>
+      </view>
+      <view class="case-badge">精选</view>
+    </view>
+    <view class="case-small-grid">
+      <view class="case-card small" wx:for="{{hotCases}}" wx:key="id" wx:if="{{index > 0}}" bindtap="goToCaseDetail" data-id="{{item.id}}">
+        <image src="{{item.image}}" mode="aspectFill"/>
+        <view class="case-info">
+          <view class="case-car">{{item.carModel}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cta-section">
+    <view class="cta-text">立即预约，享受专属服务</view>
+    <button class="btn-primary" bindtap="makeAppointment">预约咨询</button>
+  </view>
+</view>

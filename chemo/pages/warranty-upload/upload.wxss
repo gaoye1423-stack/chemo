@@ -1,0 +1,65 @@
+page { background: #000; color: #fff; }
+.container { padding: 180rpx 40rpx 240rpx; box-sizing: border-box; }
+
+.step-header { display: flex; align-items: center; justify-content: center; margin-bottom: 60rpx; }
+.step-item { font-size: 24rpx; color: #444; }
+.step-item.active { color: #ff6b35; font-weight: bold; }
+.step-line { width: 60rpx; height: 1rpx; background: #2a2a2a; margin: 0 20rpx; }
+
+.form-group { background: #1a1a1a; border-radius: 32rpx; padding: 40rpx; margin-bottom: 40rpx; border: 1rpx solid #2a2a2a; }
+.group-title { font-size: 28rpx; color: #ff6b35; margin-bottom: 40rpx; font-weight: bold; letter-spacing: 2rpx; }
+
+.input-item { width: 100%; margin-bottom: 40rpx; }
+.input-item.small { margin-bottom: 20rpx; }
+.input-item.no-margin { margin-bottom: 0; }
+.label { font-size: 26rpx; color: #888; display: block; margin-bottom: 20rpx; }
+.tag { font-size: 20rpx; color: #ff6b35; background: rgba(255,107,53,0.1); padding: 2rpx 8rpx; border-radius: 4rpx; margin-left: 10rpx; }
+
+input, .picker-val, textarea {
+  width: 100% !important; 
+  box-sizing: border-box; 
+  height: 100rpx; 
+  background: #0a0a0a; 
+  border-radius: 16rpx; 
+  padding: 0 30rpx; 
+  font-size: 28rpx; 
+  color: #fff;
+  border: 1rpx solid #333;
+}
+.picker-val { display: flex; align-items: center; }
+textarea { height: 160rpx; padding: 24rpx 30rpx; }
+
+.input-row { display: flex; align-items: center; width: 100%; }
+.flex-input { flex: 1; margin-right: 20rpx; }
+.scan-btn { height: 100rpx; padding: 0 30rpx; background: rgba(255, 107, 53, 0.1); color: #ff6b35; border: 1rpx solid #ff6b35; border-radius: 16rpx; font-size: 24rpx; display: flex; align-items: center; justify-content: center; }
+
+.type-btn-group { display: flex; gap: 20rpx; margin-bottom: 40rpx; }
+.type-btn { flex: 1; height: 86rpx; line-height: 86rpx; text-align: center; background: #0a0a0a; border-radius: 12rpx; font-size: 26rpx; color: #666; border: 1rpx solid #333; }
+.type-btn.active { color: #ff6b35; border-color: #ff6b35; background: rgba(255,107,53,0.1); font-weight: bold; }
+
+/* 施工部位网格 - 太阳膜专供 */
+.parts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15rpx; }
+.parts-item { 
+  font-size: 22rpx; color: #555; height: 80rpx; display: flex; 
+  align-items: center; justify-content: center; background: #0a0a0a; 
+  border-radius: 12rpx; border: 1rpx solid #333; 
+}
+.parts-item.item-active { color: #ff6b35; border-color: #ff6b35; background: rgba(255,107,53,0.1); }
+
+/* 动态详情卡片 */
+.part-detail-box { 
+  background: #141414; padding: 30rpx; border-radius: 20rpx; 
+  border-left: 6rpx solid #ff6b35; margin-top: 20rpx; margin-bottom: 30rpx; 
+}
+.part-tag { font-size: 24rpx; color: #ff6b35; font-weight: bold; margin-bottom: 20rpx; }
+
+.ph, .placeholder { color: #333; }
+
+.upload-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15rpx; }
+.upload-add, .upload-preview { width: 100%; height: 140rpx; border-radius: 12rpx; background: #0a0a0a; border: 1rpx dashed #333; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.add-icon { font-size: 40rpx; color: #444; }
+.add-tip { font-size: 18rpx; color: #444; }
+.upload-preview image { width: 100%; height: 100%; border-radius: 12rpx; }
+.del-img { position: absolute; top: -10rpx; right: -10rpx; background: #ff6b35; color: #000; width: 34rpx; height: 34rpx; border-radius: 50%; text-align: center; line-height: 34rpx; font-size: 24rpx; font-weight: bold; }
+
+.submit-btn { width: 100%; margin-top: 60rpx; background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%); color: #000; font-weight: bold; border-radius: 50rpx; height: 100rpx; line-height: 100rpx; font-size: 32rpx; border: none; }

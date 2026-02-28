@@ -1,0 +1,67 @@
+<navbar title="产品"/>
+
+<view class="container">
+  <view class="header-text-section">
+    <view class="banner-content">
+      <view class="banner-tag">{{currentBanner.tag}}</view>
+      <view class="banner-title">{{currentBanner.title}}</view>
+      <view class="banner-subtitle">{{currentBanner.subtitle}}</view>
+    </view>
+  </view>
+
+  <view class="sticky-box">
+    <view class="series-tabs-float">
+      <view 
+        class="tab-item-float {{currentSeries === index ? 'active' : ''}}" 
+        wx:for="{{seriesList}}" 
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="switchSeries"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view class="product-list">
+    <view 
+      class="product-card-large" 
+      wx:for="{{currentProducts}}" 
+      wx:key="_id"
+      data-id="{{item._id}}" 
+      bindtap="goToDetail"
+    >
+      <view class="product-image-wrap">
+        <image class="product-image-large" src="{{item.image}}" mode="aspectFill"/>
+        <view class="product-glow"></view>
+      </view>
+      
+      <view class="product-content">
+        <view class="product-header">
+          <view class="product-tag-large">{{item.tag}}</view>
+          <view class="product-price">
+            <text class="price-symbol">¥</text>
+            <text class="price-num">{{item.price}}</text>
+            <text class="price-unit">起</text>
+          </view>
+        </view>
+        
+        <view class="product-name-large">{{item.name}}</view>
+        <view class="product-desc">{{item.desc}}</view>
+        
+        <view class="specs-grid">
+          <view class="spec-item-large" wx:for="{{item.specs}}" wx:for-item="spec" wx:key="index">
+            <text class="spec-value">{{spec.value}}</text>
+            <text class="spec-label">{{spec.label}}</text>
+          </view>
+        </view>
+
+        <view class="product-action">
+          <button class="btn-consult">查看详情</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<tabbar selected="1"/>

@@ -1,0 +1,55 @@
+<navbar title="质保记录管理" back="{{true}}" />
+
+<view class="container">
+  <view class="stats-header">
+    <view class="stats-card">
+      <view class="stats-item">
+        <view class="stats-num">{{records.length}}</view>
+        <view class="stats-label">总记录数</view>
+      </view>
+      <view class="stats-divider"></view>
+      <view class="stats-item">
+        <view class="stats-num">{{todayCount}}</view>
+        <view class="stats-label">今日新增</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="search-bar">
+    <view class="search-box">
+      <icon type="search" size="16" color="#666"></icon>
+      <input confirm-type="search" bindconfirm="onSearch" bindinput="onSearchInput" placeholder="搜索车牌或车主姓名" placeholder-class="ph" value="{{searchKey}}" />
+    </view>
+    <view class="search-btn" bindtap="onSearch">搜索</view>
+  </view>
+
+  <view class="list-container">
+    <block wx:if="{{records.length > 0}}">
+      <view class="card" wx:for="{{records}}" wx:key="_id" bindtap="goToDetail" data-id="{{item._id}}">
+        <view class="card-top">
+          <view class="plate">{{item.carPlate}}</view>
+          <view class="type-tag">{{item.productType}}</view>
+        </view>
+        
+        <view class="card-mid">
+          <view class="info"><text class="label">车主：</text>{{item.ownerName}}</view>
+          <view class="info"><text class="label">系列：</text>{{item.productSeries || '官方系列'}}</view>
+          <view class="info"><text class="label">日期：</text>{{item.constructDate}}</view>
+        </view>
+
+        <view class="card-bottom">
+          <text class="sn">SN: {{item.snCode || '详见详情'}}</text>
+          <view class="btn-group">
+            <text class="delete-btn" catchtap="deleteRecord" data-id="{{item._id}}" data-plate="{{item.carPlate}}">删除</text>
+            <text class="manage-btn">查看详情 ></text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view class="empty" wx:else>
+      <icon type="info" size="50" color="#333" style="margin-bottom:20rpx;"></icon>
+      <text>未发现匹配记录</text>
+    </view>
+  </view>
+</view>

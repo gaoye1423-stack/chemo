@@ -1,0 +1,26 @@
+<navbar title="成员管理" back />
+
+<view class="container">
+  <view class="add-section">
+    <view class="section-title">新增店员</view>
+    <view class="input-card">
+      <input class="my-input" placeholder="输入店员姓名" bindinput="onNameInput" value="{{inputName}}" />
+      <input class="my-input" type="number" placeholder="输入手机号" bindinput="onPhoneInput" value="{{inputPhone}}" />
+      <button class="add-btn" bindtap="submitStaff">确认添加</button>
+    </view>
+  </view>
+
+  <view class="list-section">
+    <view class="section-title">现有成员 ({{staffList.length}})</view>
+    <block wx:if="{{staffList.length > 0}}">
+      <view class="staff-card" wx:for="{{staffList}}" wx:key="_id">
+        <view class="staff-info">
+          <view class="staff-name">{{item.name}}</view>
+          <view class="staff-phone">{{item.phone}}</view>
+        </view>
+        <view class="delete-btn" bindtap="deleteStaff" data-id="{{item._id}}" data-name="{{item.name}}">删除</view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:else>暂无店员，请添加</view>
+  </view>
+</view>

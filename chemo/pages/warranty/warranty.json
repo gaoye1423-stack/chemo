@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "质保查询",
+    "usingComponents": {
+      "navbar": "/components/navbar/navbar",
+      "tabbar": "/components/tabbar/tabbar"
+    },
+    "backgroundColor": "#000000",
+    "backgroundTextStyle": "light"
+  }

@@ -1,0 +1,65 @@
+page { background-color: #000; color: #fff; font-family: -apple-system, sans-serif; }
+.container { padding: 40rpx 30rpx 100rpx; }
+
+.header { text-align: center; margin-bottom: 50rpx; }
+.title { font-size: 42rpx; color: #ff6b35; font-weight: bold; }
+.sn { font-size: 22rpx; color: #444; margin-top: 15rpx; }
+
+.info-card, .photo-section { 
+  background: #121212; 
+  border-radius: 24rpx; 
+  padding: 30rpx; 
+  margin-bottom: 30rpx; 
+  border: 1rpx solid #1e1e1e;
+}
+
+.card-title { 
+  font-size: 28rpx; color: #ff6b35; margin-bottom: 30rpx; 
+  font-weight: 600; display: flex; align-items: center;
+}
+.card-title::before {
+  content: ""; width: 6rpx; height: 28rpx; background: #ff6b35; 
+  margin-right: 15rpx; border-radius: 10rpx;
+}
+
+.item { 
+  display: flex; justify-content: space-between; 
+  padding: 24rpx 0; border-bottom: 1rpx solid #1e1e1e; 
+}
+.item:last-child { border-bottom: none; }
+.label { color: #888; font-size: 26rpx; }
+.value { color: #efefef; font-size: 26rpx; text-align: right; }
+
+/* 价格高亮 */
+.price-tag { color: #ff6b35 !important; font-weight: bold; font-size: 30rpx !important; }
+
+/* 太阳膜样式补齐 */
+.solar-box { background: #1a1a1a; border-radius: 16rpx; padding: 10rpx 20rpx; margin-bottom: 20rpx; }
+.detail-row { padding: 16rpx 0; border-bottom: 1rpx solid #262626; }
+.detail-row:last-child { border-bottom: none; }
+
+.part-header { display: flex; justify-content: space-between; align-items: center; }
+.part-name { color: #ff6b35; font-size: 26rpx; font-weight: bold; }
+.part-price { color: #ff6b35; font-size: 24rpx; font-weight: 500; }
+.part-val { color: #777; font-size: 24rpx; margin-top: 6rpx; }
+
+.remark-content { color: #aaa; font-size: 26rpx; line-height: 1.6; }
+
+/* === 3x3 布局样式 === */
+.img-grid { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 5rpx; /* 稍微调大一点间距，更有高级感 */
+}
+
+.img-grid image { 
+  width: calc((100% - 24rpx) / 3); 
+  height: 208rpx; 
+  border-radius: 12rpx; 
+  background: #1a1a1a; 
+  border: 1rpx solid #333;
+}
+
+.footer-seal { text-align: center; margin-top: 80rpx; opacity: 0.5; }
+.seal-text { font-size: 26rpx; color: #333; letter-spacing: 6rpx; }
+.timestamp { font-size: 20rpx; color: #666; margin-top: 12rpx; }

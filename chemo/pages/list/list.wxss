@@ -1,0 +1,83 @@
+page { background: #000; color: #fff; }
+.container { padding-top: 180rpx; } /* 避开自定义导航栏高度 */
+
+/* 抬头统计卡片 */
+.stats-header { padding: 30rpx; }
+.stats-card {
+  background: #121212;
+  border: 1rpx solid #1e1e1e;
+  border-radius: 24rpx;
+  display: flex;
+  padding: 40rpx 0;
+}
+.stats-item { flex: 1; text-align: center; }
+.stats-num { font-size: 40rpx; font-weight: bold; color: #ff6b35; margin-bottom: 8rpx; }
+.stats-label { font-size: 22rpx; color: #666; }
+.stats-divider { width: 1rpx; height: 60rpx; background: #2a2a2a; align-self: center; }
+
+/* 搜索框样式 */
+.search-bar {
+  display: flex;
+  padding: 0 30rpx 30rpx;
+  align-items: center;
+}
+.search-box {
+  flex: 1;
+  background: #121212;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  border: 1rpx solid #1e1e1e;
+}
+.search-box input { flex: 1; margin-left: 20rpx; font-size: 26rpx; color: #fff; }
+.search-btn {
+  margin-left: 24rpx;
+  color: #ff6b35;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.ph { color: #444; }
+
+/* 质保卡片样式 */
+.list-container { padding: 0 30rpx 40rpx; }
+.card {
+  background: #121212;
+  border: 1rpx solid #1e1e1e;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+}
+.card-top { display: flex; justify-content: space-between; margin-bottom: 20rpx; }
+.plate { color: #ff6b35; font-size: 34rpx; font-weight: bold; }
+.type-tag { font-size: 20rpx; background: rgba(255,107,53,0.1); color: #ff6b35; padding: 4rpx 12rpx; border-radius: 6rpx; }
+
+.card-mid { margin-bottom: 20rpx; }
+.info { font-size: 26rpx; color: #ccc; margin-bottom: 8rpx; }
+.label { color: #666; }
+
+/* 底部操作区布局 */
+.card-bottom { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  border-top: 1rpx solid #1e1e1e; 
+  margin-top: 20rpx; 
+  padding-top: 20rpx; 
+}
+.sn { font-size: 22rpx; color: #444; }
+
+.btn-group { display: flex; align-items: center; }
+
+/* 删除按钮样式 */
+.delete-btn {
+  font-size: 24rpx;
+  color: #ff4d4f;
+  margin-right: 30rpx;
+  padding: 10rpx 0;
+}
+
+.manage-btn { font-size: 24rpx; color: #ff6b35; }
+
+.empty { text-align: center; padding-top: 100rpx; color: #444; display: flex; flex-direction: column; align-items: center; }

@@ -1,0 +1,10 @@
+page { background: #000; color: #fff; }
+.container { padding: 40rpx; padding-top: 180rpx; }
+.section-title { font-size: 32rpx; color: #666; margin-bottom: 24rpx; }
+.input-card { background: #1a1a1a; padding: 30rpx; border-radius: 24rpx; margin-bottom: 60rpx; }
+.my-input { background: #222; height: 90rpx; border-radius: 12rpx; padding: 0 30rpx; margin-bottom: 20rpx; color: #fff; }
+.add-btn { background: #ff6b35; color: #fff; border-radius: 45rpx; margin-top: 20rpx; }
+.staff-card { background: #1a1a1a; padding: 30rpx; border-radius: 20rpx; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20rpx; border: 1rpx solid #2a2a2a; }
+.staff-name { font-size: 32rpx; margin-bottom: 4rpx; }
+.staff-phone { font-size: 24rpx; color: #555; }
+.delete-btn { color: #ff4d4f; font-size: 26rpx; padding: 10rpx 20rpx; }

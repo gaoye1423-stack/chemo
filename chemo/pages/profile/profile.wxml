@@ -1,0 +1,117 @@
+<navbar title="个人中心" />
+
+<view class="container">
+  <view class="user-profile-section">
+    <view class="user-card-main" bindtap="{{!userInfo ? 'triggerLoginModal' : ''}}">
+      <view class="avatar-wrap">
+        <image src="{{userInfo.avatarUrl || 'https://mmbiz.qpic.cn/mmbiz_png/icTdbqWNOwNRna42FI242Lcia07af9zCicqYbt9N24S475yRiaC7QG75C7Srh994r6AiaA9icS99g4yV0t75GicpL9g/0'}}" mode="aspectFill" />
+      </view>
+      <view class="user-info">
+        <view class="user-name">{{userInfo ? userInfo.nickName : '点击登录账户'}}</view>
+        <view class="user-code">{{userInfo ? (role === 'OWNER' ? '身份：授权店长' : '身份：门店员工') : '核验加盟商身份'}}</view>
+      </view>
+      <view class="user-arrow">→</view>
+    </view>
+  </view>
+
+  <view class="stats-section">
+    <view class="stat-item">
+      <view class="stat-number gradient-text">12</view>
+      <view class="stat-label">待审核</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-number gradient-text">156</view>
+      <view class="stat-label">已激活</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <view class="stat-number gradient-text">98%</view>
+      <view class="stat-label">好评率</view>
+    </view>
+  </view>
+
+  <view class="section-wrapper">
+    <view class="section-header">
+      <view class="section-title-text">管理工作台</view>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="action-card highlight-border" bindtap="goToUpload">
+      <view class="action-left">
+        <view class="action-icon-wrap active-bg">
+          <text class="action-icon">+</text>
+        </view>
+        <view class="action-text">
+          <view class="action-title">录入新质保单</view>
+          <view class="action-desc">扫描VIN码快速录入信息</view>
+        </view>
+      </view>
+      <view class="action-arrow-text">立即进入</view>
+    </view>
+
+    <view class="action-card" bindtap="goToRecords">
+      <view class="action-left">
+        <view class="action-icon-wrap gray-bg"><text class="action-icon">📋</text></view>
+        <view class="action-text">
+          <view class="action-title">质保记录查询</view>
+          <view class="action-desc">管理门店已上传记录</view>
+        </view>
+      </view>
+      <view class="action-arrow">→</view>
+    </view>
+
+    <view class="action-card" bindtap="goToStaffManage" wx:if="{{role === 'OWNER'}}">
+      <view class="action-left">
+        <view class="action-icon-wrap gray-bg"><text class="action-icon">👥</text></view>
+        <view class="action-text">
+          <view class="action-title">成员管理</view>
+          <view class="action-desc">管理门店员工账号权限</view>
+        </view>
+      </view>
+      <view class="action-arrow">→</view>
+    </view>
+
+    <view class="action-card" bindtap="goToSettings">
+      <view class="action-left">
+        <view class="action-icon-wrap gray-bg"><text class="action-icon">⚙️</text></view>
+        <view class="action-text">
+          <view class="action-title">门店资料设置</view>
+          <view class="action-desc">修改联系方式与地址</view>
+        </view>
+      </view>
+      <view class="action-arrow">→</view>
+    </view>
+  </view>
+
+  <view class="logout-btn" bindtap="handleLogout" wx:if="{{userInfo}}">退出当前账号</view>
+
+  <view class="login-mask" wx:if="{{showLoginModal}}">
+    <view class="login-panel">
+      <view class="login-header">
+        <view class="login-title">新成员核验</view>
+        <view class="login-subtitle">请输入店长为您登记的手机号以完成身份核验</view>
+      </view>
+      <view class="login-body">
+        <view class="input-group">
+          <input 
+            class="my-input" 
+            type="number" 
+            placeholder="请输入手机号" 
+            maxlength="11" 
+            placeholder-class="ph-color" 
+            bindinput="onPhoneInput"
+            focus="{{showLoginModal}}"
+          />
+        </view>
+      </view>
+      <view class="login-footer">
+        <view class="btn-cancel" bindtap="closeLoginModal">取消</view>
+        <view class="btn-submit" bindtap="handleConfirmLogin">确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<tabbar selected="3" />

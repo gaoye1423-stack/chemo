@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "我的",
+    "usingComponents": {
+      "navbar": "/components/navbar/navbar",
+      "tabbar": "/components/tabbar/tabbar"
+    },
+    "navigationStyle": "custom",
+    "backgroundColor": "#000000"
+  }
